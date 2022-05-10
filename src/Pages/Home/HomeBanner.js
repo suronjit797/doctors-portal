@@ -12,7 +12,7 @@ const bannerStyle = {
 
 const HomeBanner = () => {
     return (
-        <div className='min-h-screen flex items-center p-20' style={bannerStyle}>
+        <div className='min-h-screen flex items-center' style={bannerStyle}>
 
             <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
                 <div>
