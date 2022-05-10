@@ -13,10 +13,10 @@ const HomeAppointment = () => {
 
 
     return (
-        <div style={bgStyle} className=' px-20'>
+        <div style={bgStyle} className='px-5 md:px-20'>
             <div className="grid gird-cols-1 md:grid-cols-2 mt-64 items-center">
-                <img src={doctor} className='mt-[-100px]' alt="" />
-                <div className='text-base-100'>
+                <img src={doctor} className='mt-[-100px] hidden lg:block' alt="" />
+                <div className='text-base-100 py-16'>
                     <div className="text-primary text-xl"> Appointment </div>
                     <h1 className=" text-4xl my-6"> Make an appointment Today </h1>
                     <p className='my-6'>

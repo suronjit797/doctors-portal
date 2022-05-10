@@ -12,18 +12,18 @@ const bannerStyle = {
 
 const HomeBanner = () => {
     return (
-        <div className='min-h-screen flex items-center' style={bannerStyle}>
+        <div className='min-h-screen flex items-center my-6' style={bannerStyle}>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-                <div>
-                    <h1 className="text-5xl leading-snug text-neutral font-bold"> Your New Smile Starts Here </h1>
+            <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
+                <div className='order-2 lg:order-1'>
+                    <h1 className="text-3xl md:text-5xl leading-snug text-neutral font-bold"> Your New Smile Starts Here </h1>
                     <p className='my-4'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the</p>
 
                     <button className='btn btn-primary text-white' >
                         Get starts
                     </button >
                 </div>
-                <div>
+                <div className='order-1 lg:order-2'>
                     <img src={chair} alt="" />
                 </div>
             </div>

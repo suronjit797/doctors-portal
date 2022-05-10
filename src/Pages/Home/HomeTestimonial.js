@@ -39,7 +39,7 @@ const HomeTestimonial = () => {
 
 
     return (
-        <div className='mx-14 my-20' style={quoteStyle} >
+        <div className='mx-5 md:mx-14 my-20' style={quoteStyle} >
             <div className="text-primary text-xl text-bold"> Testimonial </div>
             <h1 className="text-4xl"> What Our Patients Says </h1>
 
