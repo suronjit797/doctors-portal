@@ -1,0 +1,6 @@
+/* header */
+ul.menu a.active,
+ul.menu a:active {
+    background-color: #3d4451;
+    color: #fff;
+}
