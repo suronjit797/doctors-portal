@@ -1,4 +1,5 @@
 import React from 'react';
+import HomeAppointment from './HomeAppointment';
 import HomeBanner from './HomeBanner';
 import HomeInfo from './HomeInfo';
 import HomeServices from './HomeServices';
@@ -11,6 +12,7 @@ const Home = () => {
                 <HomeInfo />
                 <HomeServices />
             </div>
+            <HomeAppointment />
         </div>
     );
 };
