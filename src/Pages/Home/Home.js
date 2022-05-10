@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeAppointment from './HomeAppointment';
 import HomeBanner from './HomeBanner';
+import HomeContact from './HomeContact';
 import HomeInfo from './HomeInfo';
 import HomeServices from './HomeServices';
 import HomeTestimonial from './HomeTestimonial';
@@ -15,6 +16,7 @@ const Home = () => {
             </div>
             <HomeAppointment />
             <HomeTestimonial />
+            <HomeContact />
         </div>
     );
 };
