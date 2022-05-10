@@ -30,7 +30,7 @@ const HomeInfo = () => {
 
 
     return (
-        <div className='grid grid-cols-3 gap-4 my-10'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 my-10'>
             {
                 homeInfo.map(info=><HomeInfoCard cardInfo={info} />)
             }
