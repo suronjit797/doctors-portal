@@ -1,7 +1,7 @@
 import React from 'react';
 
-const HomeInfoCard = ({ cardInfo }) => {
-    const { image, title, description, bg  } = cardInfo
+const AppointmentServiceCard = ({cardInfo}) => {
+    const { image, title, description, bg } = cardInfo
     return (
         <div className={`card lg:card-side p-6 text-white shadow-xl ${bg}`}>
             <figure>
@@ -15,4 +15,4 @@ const HomeInfoCard = ({ cardInfo }) => {
     );
 };
 
-export default HomeInfoCard;
+export default AppointmentServiceCard;

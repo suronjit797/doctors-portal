@@ -14,7 +14,7 @@ const HomeBanner = () => {
     return (
         <div className='min-h-screen flex items-center my-6' style={bannerStyle}>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
                 <div className='order-2 lg:order-1'>
                     <h1 className="text-3xl md:text-5xl leading-snug text-neutral font-bold"> Your New Smile Starts Here </h1>
                     <p className='my-4'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the</p>

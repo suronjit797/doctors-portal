@@ -19,9 +19,9 @@ const HomeContact = () => {
             <form className='w-full max-w-sm text-center' onSubmit={handleSubmit}>
                 <h1 className="text-bold text-xl text-primary"> Contact us </h1>
                 <h2 className="text-bold text-4xl mb-8"> Stay connected with us </h2>
-                <input type="email" placeholder="Email address" class="input w-full mb-3 text-neutral" />
-                <input type="text" placeholder="Subject" class="input w-full mb-3 text-neutral" />
-                <textarea placeholder="Your message" class="textarea h-32 w-full mb-3 text-neutral" />
+                <input type="email" placeholder="Email address" className="input w-full mb-3 text-neutral" />
+                <input type="text" placeholder="Subject" className="input w-full mb-3 text-neutral" />
+                <textarea placeholder="Your message" className="textarea h-32 w-full mb-3 text-neutral" />
 
                 <button className="btn btn-primary text-white px-16"> Submit </button>
 
