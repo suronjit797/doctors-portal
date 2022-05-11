@@ -49,7 +49,7 @@ const Appointment = () => {
                                         <input type="email" placeholder="Email" class="input input-bordered input-primary w-full mb-5" required />
 
                                         <label for="service-modal">
-                                            <button className='btn btn-primary text-white block w-full mx-auto'>Book now</button>
+                                            <button className='btn text-white block w-full mx-auto'>Book now</button>
                                         </label>
                                     </form>
 
