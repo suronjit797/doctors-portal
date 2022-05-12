@@ -5,6 +5,8 @@ import Header from './Pages/Shared/Header';
 
 import 'react-calendar/dist/Calendar.css';
 import './App.css';
+import Login from './Pages/Login/Login';
+import Register from './Pages/Register/Register';
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/appointment' element={<Appointment />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
     </Routes>
 
 
