@@ -46,7 +46,7 @@ const HomeTestimonial = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-3 gap-7 my-10 px-8 mt-32'>
                 {
-                    testimonialCard.map(item => <HomeTestimonialCard item={item} />)
+                    testimonialCard.map((item, index) => <HomeTestimonialCard key={index} item={item} />)
                 }
             </div>
         </div>

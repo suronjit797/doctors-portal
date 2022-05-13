@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom'
+import SocialLogin from '../Shared/SocialLogin';
 
 const Login = () => {
     const [forgotEmail, setForgotEmail] = useState('')
@@ -45,13 +46,13 @@ const Login = () => {
                         />
                         <p className='text-red-500'><small>{errors.password && "Password is required"}</small></p>
 
-                        <label for="forget-modal" class="cursor-pointer modal-button"><small> Forgot password? </small></label>
-                        <input type="checkbox" id="forget-modal" class="modal-toggle" />
-                        <div class="modal modal-bottom sm:modal-middle">
-                            <div class="modal-box">
-                                <label for="forget-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                                <h3 class="font-bold text-lg">Do you really want to forgot your password?</h3>
-                                <p class="pt-4">Provide you email</p>
+                        <label htmlFor="forget-modal" className="cursor-pointer modal-button"><small> Forgot password? </small></label>
+                        <input type="checkbox" id="forget-modal" className="modal-toggle" />
+                        <div className="modal modal-bottom sm:modal-middle">
+                            <div className="modal-box">
+                                <label htmlFor="forget-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                <h3 className="font-bold text-lg">Do you really want to forgot your password?</h3>
+                                <p className="pt-4">Provide you email</p>
                                 <input
                                     type="email"
                                     className="input input-bordered input-neutral w-full"
@@ -69,8 +70,7 @@ const Login = () => {
                         <p className=' mt-5'> New is doctors portal? <Link to='/register' className='text-primary'> create a new account </Link>  </p>
 
                     </form>
-                    <div class="divider my-6">OR</div>
-                    <button class="btn btn-outline btn-neutral w-full">Login with google</button>
+                    <SocialLogin />
                 </div>
 
 

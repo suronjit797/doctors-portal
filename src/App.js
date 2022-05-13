@@ -3,10 +3,13 @@ import Appointment from './Pages/Appointment/Appointment';
 import Home from './Pages/Home/Home';
 import Header from './Pages/Shared/Header';
 
+import 'react-toastify/dist/ReactToastify.css';
 import 'react-calendar/dist/Calendar.css';
 import './App.css';
+
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
@@ -21,6 +24,8 @@ function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
     </Routes>
+
+    <ToastContainer />
 
 
 

@@ -10,9 +10,7 @@ const AppointmentServiceCard = ({ cardInfo, setService }) => {
                 <div className="mb-4">
                     {
                         slots.length ? (
-                            slots.map((slot, index) => (
-                                <p className='mb-2'> {slot} </p>
-                            ))
+                            <p className="text-green-600"> {slots.length} services available </p>
                         ):(
                             <p className="text-red-500"> No Service Available </p>
                         )
@@ -20,7 +18,7 @@ const AppointmentServiceCard = ({ cardInfo, setService }) => {
                 </div>
 
                 <label
-                    for="service-modal"
+                    htmlFor="service-modal"
                     className="btn btn-primary text-white mx-auto mt-auto"
                     disabled={!slots.length}
                     onClick={() => setService(cardInfo)}

@@ -1,8 +1,13 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink } from 'react-router-dom';
+import auth from '../../firebase.init';
 import './Shared.css'
 
 const Header = () => {
+
+    const [user] = useAuthState(auth)
 
     const menuItems = (
         <>
@@ -11,7 +16,17 @@ const Header = () => {
             <li><NavLink className='mx-1' to='/appointment'>Appointment</NavLink></li>
             <li><NavLink className='mx-1' to='/review'>Review</NavLink></li>
             <li><NavLink className='mx-1' to='/contact'>Contact Us</NavLink></li>
-            <li><NavLink className='mx-1' to='/login'>Login</NavLink></li>
+            <li>
+                {
+                    user ? <button
+                        className="btn btn-ghost"
+                        onClick={() => signOut(auth)}
+                    >Sing Out
+                    </button>
+                        :
+                        <NavLink className='mx-1' to='/login'>Login</NavLink>
+                }
+            </li>
         </>
     )
 

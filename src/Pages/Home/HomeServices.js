@@ -36,7 +36,7 @@ const HomeServices = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4 my-10'>
                 {
-                    cardInfo.map(info => <HomeServicesCard cardInfo={info} />)
+                    cardInfo.map((info, index) => <HomeServicesCard key={index} cardInfo={info} />)
                 }
             </div>
 
