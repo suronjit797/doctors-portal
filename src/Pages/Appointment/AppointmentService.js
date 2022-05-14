@@ -8,7 +8,7 @@ const AppointmentService = ({ date , setService}) => {
     const [services, setServices] = useState([])
 
     useEffect(() => {
-        axios.get('service.json')
+        axios.get('/services')
             .then(res => setServices(res.data))
     }, [])
 
