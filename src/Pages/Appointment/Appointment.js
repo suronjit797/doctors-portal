@@ -7,6 +7,8 @@ import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import Spinner from '../Shared/Spinner';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Appointment = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -19,7 +21,16 @@ const Appointment = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const handleAppointmentSubmit = data => {
-        console.log(data);
+        data.service = service.name
+        axios.post('/services', data)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.success) {
+                    return toast.success('Your booking successful', { theme: 'colored' })
+                }
+                return toast.error('You have already booked this services', { theme: 'colored' })
+            })
+
         setService({})
     }
 

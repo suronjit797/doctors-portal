@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AppointmentServiceCard = ({ cardInfo, setService }) => {
-    const { name, slots } = cardInfo
+    const { name, available } = cardInfo
     return (
         <div className={`card  p-6 text-center shadow-md`}>
             <div className='flex flex-col min-h-full'>
@@ -9,9 +9,9 @@ const AppointmentServiceCard = ({ cardInfo, setService }) => {
 
                 <div className="mb-4">
                     {
-                        slots.length ? (
-                            <p className="text-green-600"> {slots.length} services available </p>
-                        ):(
+                        available.length ? (
+                            <p className="text-green-600"> {available.length} services available </p>
+                        ) : (
                             <p className="text-red-500"> No Service Available </p>
                         )
                     }
@@ -20,7 +20,7 @@ const AppointmentServiceCard = ({ cardInfo, setService }) => {
                 <label
                     htmlFor="service-modal"
                     className="btn btn-primary text-white mx-auto mt-auto"
-                    disabled={!slots.length}
+                    disabled={!available.length}
                     onClick={() => setService(cardInfo)}
                 > Book Appointment </label>
             </div>
