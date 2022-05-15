@@ -37,11 +37,11 @@ const Appointment = () => {
             .then(res => {
                 console.log(res.data);
                 if (res.data.success) {
+                    refetch()
                     return toast.success('Your booking successful', { theme: 'colored' })
                 }
                 return toast.error('You have already booked this services', { theme: 'colored' })
             })
-        refetch()
         setService({})
     }
 

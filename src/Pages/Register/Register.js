@@ -1,14 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 import SocialLogin from '../Shared/SocialLogin';
 
 const Register = () => {
 
+    const navigate = useNavigate()
+    
+    const location = useLocation()
+    let from = location?.state?.from?.pathname || "/";
+
+    const [updateProfile, updating, upError] = useUpdateProfile(auth);
+    const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = data => {
-        console.log(data);
+    const onSubmit = async data => {
+        if (data.password === data.ConfirmPassword) {
+            await createUserWithEmailAndPassword(data.email, data.password)
+            await updateProfile({ displayName: data.name });
+        } else {
+            toast.warn("Password doesn't match", { theme: 'colored' })
+        }
     }
+
+    useEffect(()=>{
+        if(user){
+            navigate(from)
+        }
+    },[navigate, from, user])
 
 
     return (
@@ -26,7 +48,7 @@ const Register = () => {
                             className="input input-bordered input-neutral w-full"
                         />
                         <p className='text-red-500'><small>{errors.name?.type === 'required' && "Name is required"}</small></p>
-                        
+
                         <label className="label mt-4">
                             <span className="label-text font-bold">Email</span>
                         </label>
