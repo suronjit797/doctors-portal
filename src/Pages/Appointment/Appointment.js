@@ -9,8 +9,11 @@ import { useForm } from "react-hook-form";
 import Spinner from '../Shared/Spinner';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useQuery } from 'react-query';
 
 const Appointment = () => {
+
+
     const [user, loading, error] = useAuthState(auth);
     const [date, setDate] = useState(new Date());
     const [service, setService] = useState({});
@@ -18,10 +21,18 @@ const Appointment = () => {
     const dt = dayjs(date).format('MMMM DD, YYYY')
 
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    // react query
+    const { isLoading, data: services, refetch } = useQuery(['services', dt], () =>
+        axios.get(`/availableService?date=${dt}`).then(res => res.data)
+    )
+
+    // react hooks form
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const handleAppointmentSubmit = data => {
         data.service = service.name
+        data.date = dt
+        // console.log(da);
         axios.post('/services', data)
             .then(res => {
                 console.log(res.data);
@@ -30,25 +41,24 @@ const Appointment = () => {
                 }
                 return toast.error('You have already booked this services', { theme: 'colored' })
             })
-
+        refetch()
         setService({})
     }
 
-    if (loading) {
+
+    if (loading || isLoading) {
         return <Spinner />
     }
-
     return (
         <div>
             <div className="px-5 md:px-20">
                 <AppointmentBanner date={date} setDate={setDate} />
-                <AppointmentService date={dt} setService={setService} />
-
+                <AppointmentService services={services} date={dt} setService={setService} />
 
                 {/* modal */}
 
                 {
-                    Object.keys(service).length && (
+                    Object.keys(service).length ? (
                         <>
                             <input type="checkbox" id="service-modal" className="modal-toggle" />
                             <div className="modal modal-bottom sm:modal-middle backdrop-blur-sm">
@@ -58,14 +68,6 @@ const Appointment = () => {
 
                                     {/* booking form */}
                                     <form className='text-center' onSubmit={handleSubmit(handleAppointmentSubmit)}>
-                                        <input
-                                            type="text"
-                                            defaultValue={dt}
-                                            {...register("date")}
-                                            className="input input-bordered input-primary w-full mb-5"
-                                            required
-                                            readOnly
-                                        />
                                         <input
                                             type="text"
                                             defaultValue={user.displayName}
@@ -93,9 +95,8 @@ const Appointment = () => {
 
                                         {/* booking time  */}
                                         <select name='booking_slot' {...register("slot")} className="select select-primary mb-5 w-full" required>
-                                            <option defaultValue='' disabled>Book the slot</option>
                                             {
-                                                service && service?.slots?.map((slot, index) => (
+                                                service && service?.available?.map((slot, index) => (
                                                     <option value={slot} key={index}>{slot}</option>
                                                 ))
                                             }
@@ -105,14 +106,13 @@ const Appointment = () => {
                                             <button className='btn text-white block w-full mx-auto'>Book now</button>
                                         </label>
                                     </form>
-
                                 </div>
                             </div>
                         </>
+                    ) : (
+                        <></>
                     )
                 }
-
-
             </div>
             <Footer />
         </div >

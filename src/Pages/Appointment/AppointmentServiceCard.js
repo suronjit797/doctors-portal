@@ -2,6 +2,7 @@ import React from 'react';
 
 const AppointmentServiceCard = ({ cardInfo, setService }) => {
     const { name, available } = cardInfo
+
     return (
         <div className={`card  p-6 text-center shadow-md`}>
             <div className='flex flex-col min-h-full'>

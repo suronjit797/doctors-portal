@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import AppointmentServiceCard from './AppointmentServiceCard';
-import axios from 'axios';
 
 
-const AppointmentService = ({ date , setService}) => {
+const AppointmentService = ({ date, setService, services }) => {
 
-    const [services, setServices] = useState([])
 
-    useEffect(() => {
-        console.log(date);
-        axios.get(`/availableService?date=${date}`)
-            .then(res => setServices(res.data))
-    }, [date])
 
     return (
         <div>
@@ -19,7 +12,7 @@ const AppointmentService = ({ date , setService}) => {
 
             <div className='grid grid-cols-1 md:grid-cols-3 gap-7 my-10'>
                 {
-                    services.map(info => <AppointmentServiceCard key={info._id} cardInfo={info} setService={setService} />)
+                    services?.map(info => <AppointmentServiceCard key={info._id} cardInfo={info} setService={setService} />)
                 }
             </div>
         </div>
