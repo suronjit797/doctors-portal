@@ -1,22 +1,53 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
+import FirebaseError from '../Shared/FirebaseError';
 import SocialLogin from '../Shared/SocialLogin';
+import Spinner from '../Shared/Spinner';
 
 const Login = () => {
     const [forgotEmail, setForgotEmail] = useState('')
 
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location?.state?.from?.pathname || "/";
+
+    const [
+    signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = data => {
-        console.log(data);
+        signInWithEmailAndPassword(data.email, data.password)
     }
     const forgotPassword = () => {
         console.log(forgotEmail);
-
-
-
         setForgotEmail('')
     }
+
+    useEffect(() => {
+        if (loading) {
+            <Spinner />
+        }
+    }, [loading])
+
+    useEffect(() => {
+        if (error) {
+            toast.error(FirebaseError(error.message), { theme: 'colored' })
+        }
+    }, [error])
+
+    useEffect(() => {
+        if (user) {
+            navigate(from)
+        }
+    }, [user, from, navigate])
 
 
     return (

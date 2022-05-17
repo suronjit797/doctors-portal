@@ -8,9 +8,9 @@ import Spinner from './Spinner';
 
 const SocialLogin = () => {
     const navigate = useNavigate()
-
     const location = useLocation()
     let from = location?.state?.from?.pathname || "/";
+    
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
     useEffect(() => {
@@ -18,6 +18,7 @@ const SocialLogin = () => {
             navigate(from)
         }
     }, [user, from, navigate])
+
     useEffect(() => {
         if (error) {
             toast.error( FirebaseError(error.message), { theme: 'colored' })
